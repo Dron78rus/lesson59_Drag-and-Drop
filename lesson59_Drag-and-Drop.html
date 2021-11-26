@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      p {
+        font-weight: bold;
+      }
+      .topic {
+        text-decoration: underline;
+        margin: 10px;
+      }
+      .task {
+        margin: 20px 10px;
+      }
+
+      .movableElement {
+        position: absolute;
+        height: 100px;
+        width: 150px;
+        border: blue dashed 1px;
+        display: inline-block;
+        text-align: center;
+      }
+    </style>
+
+    <p>Задание 1</p>
+
+    <div class="topic">Перетягиваемый элемент</div>
+    <div class="task">
+      Реализуйте самостоятельно задачу, чтобы можно было перемещать элемент
+      мышкой по окну браузера.
+    </div>
+
+    <div class="movableElement T1" draggable="true"></div>
+
+    <script>
+      // http://new.code.mu/ru/javascript/book/drag-and-drop/element-movement-on-window/
+
+      const d = document
+      T1 = d.querySelector('.T1')
+      let deltaX, deltaY
+
+      T1.addEventListener('dragstart', (e) => {
+        deltaX = e.offsetX
+        deltaY = e.offsetY
+      })
+      T1.addEventListener('dragend', (e) => {
+        T1.style.top = e.pageY - deltaY + 'px'
+        T1.style.left = e.pageX - deltaX + 'px'
+      })
+    </script>
+  </body>
+</html>
